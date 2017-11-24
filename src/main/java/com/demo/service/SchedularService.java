@@ -39,8 +39,10 @@ public class SchedularService {
 			String maxDate =  getTimeInJodaFormat(days);
 			
 			Map<String, Object> appoFilter = new HashMap<>();
+			appoFilter.put("calendarID", config.getCALENDAR_ID());
 			appoFilter.put("maxDate", maxDate);
-			appoFilter.put("appointmentTypeID", config.getAPPOINTMENT_TYPE_ID());
+			
+			//appoFilter.put("appointmentTypeID", config.getAPPOINTMENT_TYPE_ID());
 
 			HttpResponse<JsonNode> response = Unirest.get(config.getAPPOINMENTS_URL())
 					.basicAuth(config.getAPPOINMENTS_USER_ID(), config.getAPPOINMENTS_KEY())
@@ -91,6 +93,7 @@ public class SchedularService {
 			if(response.getStatus() == 200){
 				autoPilotResp = new AutoPilotResponse();
 				autoPilotResp.setEmail(email);
+				autoPilotResp.setIsPaperWorkNull(true);
 				
 				if(respBody.has("custom_fields")){
 					JSONArray customFields = respBody.getJSONArray("custom_fields");

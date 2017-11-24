@@ -26,12 +26,23 @@ public class ApplicationConfig {
 	
 	private static int CANCEL_DAYS;
 	
+	private static String CALENDAR_ID;
 	
+	
+	public String getCALENDAR_ID() {
+		return CALENDAR_ID;
+	}
+
+	@Value("${appointments.calendarId}")
+	public void setCALENDAR_ID(String cALENDAR_ID) {
+		CALENDAR_ID = cALENDAR_ID;
+	}
+
 	public String getAPPOINTMENT_TYPE_ID() {
 		return APPOINTMENT_TYPE_ID;
 	}
 
-	@Value("${appointment_type_id}")
+	//@Value("${appointment_type_id}")
 	public void setAPPOINTMENT_TYPE_ID(String aPPOINTMENT_TYPE_ID) {
 		APPOINTMENT_TYPE_ID = aPPOINTMENT_TYPE_ID;
 	}
@@ -108,7 +119,5 @@ public class ApplicationConfig {
 	public void setCANCEL_DAYS(int cANCEL_DAYS) {
 		CANCEL_DAYS = cANCEL_DAYS;
 	}
-	
-	
 
 }
